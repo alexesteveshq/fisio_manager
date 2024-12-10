@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_pathology_tree_view" model="ir.ui.view">
+        <field name="name">medical.pathology.tree.view</field>
+        <field name="model">medical.pathology</field>
+        <field name="arch" type="xml">
+            <tree string="ICD10" editable="bottom">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_pathology_action" model="ir.actions.act_window">
+        <field name="name">ICD10</field>
+        <field name="res_model">medical.pathology</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_record_tree_view" model="ir.ui.view">
+        <field name="name">medical.record.tree.view</field>
+        <field name="model">medical.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="medic_id" domain="[('contact_type', '=', 'medic')]"/>
+                <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
+                <field name="diagnosis"/>
+                <field name="evaluation"/>
+                <field name="state"/>
+                <field name="invoice_state"/>
+                <field name="appointment_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_record_form_view" model="ir.ui.view">
+        <field name="name">medical.record.form.view</field>
+        <field name="model">medical.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <field name="invoice_id" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_consultation_invoice"
+                            type="object" string="Invoice"
+                            class="oe_stat_button"
+                            invisible="not invoice_id"
+                            icon="fa-dollar">
+                        </button>
+                    </div>
+                    <group>
+                        <field name="medic_id" domain="[('contact_type', '=', 'medic')]"/>
+                        <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
+                        <field name="appointment_id" readonly="1"/>
+                        <field name="age"/>
+                        <field name="vat"/>
+                        <field name="diagnosis"/>
+                        <field name="evaluation"/>
+                        <field name="recipe"/>
+                        <field name="procedure_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page name="consultations" string="Consultations">
+                            <field name="consultation_ids" nolabel="1">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="sessions" string="Sessions">
+                            <field name="session_ids" nolabel="1">
+                                <tree default_order="date" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="therapist_id" domain="[('contact_type', '=', 'therapist')]"/>
+                                    <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
+                                    <field name="pain_level"/>
+                                    <field name="procedure_ids" widget="many2many_tags"/>
+                                    <field name="description"/>
+                                    <field name="observations"/>
+                                    <field name="currency_id" invisible="1" optional="hide"/>
+                                    <field name="quantity"/>
+                                    <field name="state"/>
+                                    <field name="invoice_state" widget="badge" decoration-success="invoice_state == 'invoiced'"
+                                        decoration-warning="invoice_state == 'not_invoiced'"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="medical_record_action" model="ir.actions.act_window">
+        <field name="name">Medical record</field>
+        <field name="res_model">medical.record</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

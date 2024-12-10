@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_record_session_tree_view" model="ir.ui.view">
+        <field name="name">medical.record.session.tree.view</field>
+        <field name="model">medical.record.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="medical_record_id"/>
+                <field name="date"/>
+                <field name="therapist_id"/>
+                <field name="patient_id"/>
+                <field name="pain_level"/>
+                <field name="procedure_ids" widget="many2many_tags"/>
+                <field name="description"/>
+                <field name="observations"/>
+                <field name="quantity"/>
+                <field name="state" widget="badge" decoration-success="state == 'attended'"
+                       decoration-warning="state == 'waiting'" decoration-danger="state == 'not_attended'"/>
+                <field name="invoice_state" widget="badge" decoration-success="invoice_state == 'invoiced'"
+                       decoration-warning="invoice_state == 'not_invoiced'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_record_session_form_view" model="ir.ui.view">
+        <field name="name">medical.record.session.form.view</field>
+        <field name="model">medical.record.session</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <field name="invoice_id" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_session_invoice"
+                            type="object" string="Invoice"
+                            class="oe_stat_button"
+                            invisible="not invoice_id"
+                            icon="fa-dollar">
+                        </button>
+                    </div>
+                    <group>
+                        <field name="medical_record_id"/>
+                        <field name="date"/>
+                        <field name="therapist_id" domain="[('contact_type', '=', 'therapist')]"/>
+                        <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
+                        <field name="pain_level"/>
+                        <field name="procedure_ids" widget="many2many_tags"/>
+                        <field name="description"/>
+                        <field name="observations"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="medical_record_session_action" model="ir.actions.act_window">
+        <field name="name">Session</field>
+        <field name="res_model">medical.record.session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

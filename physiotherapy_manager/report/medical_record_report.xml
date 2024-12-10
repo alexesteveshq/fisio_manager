@@ -1,0 +1,21 @@
+<odoo>
+    <record id="action_report_medical_record" model="ir.actions.report">
+        <field name="name">Medical Record Report</field>
+        <field name="model">medical.record</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">physiotherapy_manager.report_medical_record_template</field>
+        <field name="report_file">physiotherapy_manager.report_medical_record_template</field>
+        <field name="binding_model_id" ref="model_medical_record"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_recipe" model="ir.actions.report">
+        <field name="name">Recipe Report</field>
+        <field name="model">medical.record</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">physiotherapy_manager.report_recipe_template</field>
+        <field name="report_file">physiotherapy_manager.report_recipe_template</field>
+        <field name="binding_model_id" ref="model_medical_record"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

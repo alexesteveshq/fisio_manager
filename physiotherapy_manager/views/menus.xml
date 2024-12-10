@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="physiotherapy_manager_menu_root" name="Physiotherapy manager"/>
+    <menuitem id="medical_record_menu" parent="physiotherapy_manager_menu_root" action="medical_record_action" sequence="0"/>
+    <menuitem id="medical_record_session_menu" parent="physiotherapy_manager_menu_root" action="medical_record_session_action" sequence="1"/>
+    <menuitem id="medical_appointment_root_menu" name="Appointments" parent="physiotherapy_manager_menu_root" sequence="2"/>
+    <menuitem id="medical_appointment_calendar_menu" parent="medical_appointment_root_menu" action="medical_appointment_calendar_action"/>
+    <menuitem id="medical_appointment_this_week_menu" parent="medical_appointment_root_menu" action="medical_appointment_this_week_action"/>
+    <menuitem id="physiotherapy_manager_config_menu" name="Configuration" parent="physiotherapy_manager_menu_root" sequence="3"/>
+    <menuitem id="medical_procedure_menu" parent="physiotherapy_manager_config_menu" action="medical_procedure_action"/>
+    <menuitem id="medical_ensurance_menu" parent="physiotherapy_manager_config_menu" action="medical_ensurance_action"/>
+    <menuitem id="medical_pathology_menu" parent="physiotherapy_manager_config_menu" action="medical_pathology_action"/>
+</odoo>

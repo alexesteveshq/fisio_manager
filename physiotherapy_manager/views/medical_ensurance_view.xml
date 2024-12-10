@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_procedure_form_view" model="ir.ui.view">
+        <field name="name">medical.procedure.form.view</field>
+        <field name="model">medical.ensurance</field>
+        <field name="arch" type="xml">
+            <form string="Ensurance">
+                <group>
+                    <field name="name" required="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="medical_ensurance_tree_view" model="ir.ui.view">
+        <field name="name">medical.ensurance.tree.view</field>
+        <field name="model">medical.ensurance</field>
+        <field name="arch" type="xml">
+            <tree string="Ensurance">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_ensurance_action" model="ir.actions.act_window">
+        <field name="name">Ensurance</field>
+        <field name="res_model">medical.ensurance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

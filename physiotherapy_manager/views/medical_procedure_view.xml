@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_procedure_form_view" model="ir.ui.view">
+        <field name="name">medical.procedure.form.view</field>
+        <field name="model">medical.procedure</field>
+        <field name="arch" type="xml">
+            <form string="Procedure">
+                <group>
+                    <field name="name" required="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="medical_procedure_tree_view" model="ir.ui.view">
+        <field name="name">medical.procedure.tree.view</field>
+        <field name="model">medical.procedure</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_procedure_action" model="ir.actions.act_window">
+        <field name="name">Procedures</field>
+        <field name="res_model">medical.procedure</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

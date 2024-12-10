@@ -1,0 +1,96 @@
+<odoo>
+    <template id="report_medical_record_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- Report Header -->
+                        <h2><strong>Physiotherapy report</strong></h2>
+                        <br/>
+                        <p><strong>Medic:</strong> <t t-esc="doc.medic_id.name"/></p>
+                        <p><strong>Patient:</strong> <t t-esc="doc.patient_id.name"/></p>
+                        <p><strong>Diagnosis:</strong> <t t-esc="doc.diagnosis"/></p>
+                        <p><strong>Evaluation:</strong> <t t-esc="doc.evaluation"/></p>
+                        <br/>
+
+                        <!-- Sessions Section -->
+                        <h3 class="mt-4 mb-3">Sessions</h3><br/>
+                        <div class="container-fluid">
+                            <!-- Header Row for Session Details -->
+                            <div class="row font-weight-bold pb-3" style="border-bottom: 1px solid #000;">
+                                <div class="col-1 me-2" style="width: 100px">Date</div>
+                                <div class="col-1 me-2">Therapist</div>
+                                <div class="col-1 me-2 text-center">Pain</div>
+                                <div class="col-2 me-2">Procedures</div>
+                                <div class="col-2 me-2">Description</div>
+                                <div class="col-2 me-2">Observations</div>
+                                <div class="col-1"/>
+                            </div>
+
+                            <!-- Iterating Through Sessions -->
+                            <t t-if="doc.session_ids">
+                                <t t-foreach="doc.session_ids" t-as="session">
+                                    <div class="row pb-3 pt-3" style="border-bottom: 1px solid #000;">
+                                        <div class="col-1 me-2" style="width: 100px">
+                                            <t t-esc="session.date"/>
+                                        </div>
+                                        <div class="col-1 me-2">
+                                            <t t-esc="session.therapist_id.name"/>
+                                        </div>
+                                        <div class="col-1 me-2  text-center">
+                                            <t t-esc="session.pain_level"/>
+                                        </div>
+                                        <div class="col-2 me-2">
+                                            <t t-foreach="session.procedure_ids" t-as="procedure">
+                                                <span class="badge bg-secondary me-2 mb-2">
+                                                    <t t-esc="procedure.name"/>
+                                                </span>
+                                            </t>
+                                        </div>
+                                        <div class="col-2 me-2">
+                                            <t t-esc="session.description"/>
+                                        </div>
+                                        <div class="col-2 me-2">
+                                            <t t-esc="session.observations"/>
+                                        </div>
+                                        <div class="col-1"/>
+                                    </div>
+                                </t>
+                            </t>
+
+                            <!-- Message if No Sessions Found -->
+                            <t t-if="not doc.session_ids">
+                                <div class="row">
+                                    <div class="col-12">No sessions found.</div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_recipe_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- Report Header -->
+                        <h2><strong>Recipe</strong></h2>
+                        <br/>
+                        <p><strong>Medic:</strong> <t t-esc="doc.medic_id.name"/></p>
+                        <p><strong>Patient:</strong> <t t-esc="doc.patient_id.name"/></p>
+                        <p><strong>Diagnosis:</strong> <t t-esc="doc.diagnosis"/></p>
+                        <br/>
+                        <hr/>
+                        <br/>
+                        <div class="container-fluid">
+                            <div t-out="doc.recipe"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

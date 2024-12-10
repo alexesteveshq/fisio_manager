@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medical_appointment_form_view" model="ir.ui.view">
+        <field name="name">medical.appointment.form.view</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment">
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <group>
+                        <field name="date_begin" string="Date" widget="daterange" required="1" options="{'end_date_field': 'date_end'}" />
+                        <field name="date_end" invisible="1" />
+                        <field name="type" required="1"/>
+                        <field name="patient_id" required="type == 'consultation'" invisible="type != 'consultation'"
+                               domain="[('contact_type', '=', 'patient')]"/>
+                        <field name="medic_id" invisible="type != 'consultation'" required="type == 'consultation'"
+                               domain="[('contact_type', '=', 'medic')]"/>
+                        <field name="medical_record_id" invisible="not type" readonly="type == 'consultation'" force_save="1"/>
+                        <field name="therapist_id" invisible="type != 'therapy'" required="type == 'therapy'"
+                               domain="[('contact_type', '=', 'therapist')]"/>
+                        <field name="session_id" invisible="type != 'therapy'" readonly="1" force_save="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="medical_appointment_calendar_view" model="ir.ui.view">
+        <field name="name">medical.appointment.calendar.view</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="date_begin" date_stop="date_end" color="therapist_id"
+                event_open_popup="false"
+                quick_create="false">
+                <field name="patient_id"/>
+                <field name="type"/>
+                <field name="medic_id" invisible="type != 'consultation'" filters="1" />
+                <field name="medical_record_id" invisible="type != 'consultation'"/>
+                <field name="therapist_id" invisible="type != 'therapy'" filters="1"/>
+                <field name="session_id" invisible="type != 'therapy'"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="medical_appointment_search_view" model="ir.ui.view">
+        <field name="name">medical.appointment.search.view</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Search Appointments">
+                <filter name="this_week" string="This Week" domain="[('is_this_week', '=', True)]"/>
+                <filter name="is_medic" string="Is medic" domain="[('medic_id', '!=', False)]"/>
+                <filter name="is_therapist" string="Is therapist" domain="[('therapist_id', '!=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_by_type" string="Type" context="{'group_by':'type'}"/>
+                    <filter name="group_by_medic" string="Medic" context="{'group_by':'medic_id'}"/>
+                    <filter name="group_by_day" string="Day Name" context="{'group_by':'day_name'}"/>
+                    <filter name="group_by_therapist" string="Therapist" context="{'group_by':'therapist_id'}"/>
+                </group>
+                <field name="patient_id"/>
+                <field name="medic_id"/>
+                <field name="therapist_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="medical_appointment_tree_view" model="ir.ui.view">
+        <field name="name">medical.appointment.tree.view</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <tree expand="1">
+                <field name="day_name"/>
+                <field name="session_id"/>
+                <field name="patient_id"/>
+                <field name="therapist_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="medical_appointment_calendar_action" model="ir.actions.act_window">
+        <field name="name">Calendar</field>
+        <field name="res_model">medical.appointment</field>
+        <field name="view_mode">calendar,form</field>
+    </record>
+
+    <record id="medical_appointment_this_week_action" model="ir.actions.act_window">
+        <field name="name">This week</field>
+        <field name="res_model">medical.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_this_week': 1, 'search_default_group_by_therapist': 1, 'search_default_group_by_day': 1}</field>
+    </record>
+</odoo>
