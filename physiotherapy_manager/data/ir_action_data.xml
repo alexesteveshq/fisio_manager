@@ -10,8 +10,8 @@
 
     <record id="consultation_invoice_generate_action" model="ir.actions.server">
         <field name="name">Generate invoice</field>
-        <field name="model_id" ref="physiotherapy_manager.model_medical_record"/>
-        <field name="binding_model_id" ref="physiotherapy_manager.model_medical_record"/>
+        <field name="model_id" ref="physiotherapy_manager.model_medical_consultation"/>
+        <field name="binding_model_id" ref="physiotherapy_manager.model_medical_consultation"/>
         <field name="binding_view_types">list</field>
         <field name="state">code</field>
         <field name="code">action = records.invoice_generate()</field>

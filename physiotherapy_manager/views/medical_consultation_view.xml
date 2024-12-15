@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="medical_consultation_tree_view" model="ir.ui.view">
+        <field name="name">medical.consultation.tree.view</field>
+        <field name="model">medical.consultation</field>
+        <field name="arch" type="xml">
+            <tree string="Consultations">
+                <field name="display_name"/>
+                <field name="appointment_state"/>
+                <field name="patient_id"/>
+                <field name="medic_id"/>
+                <field name="invoice_state"/>
+            </tree>
+        </field>
+    </record>
+
     <record id="medical_consultation_form_view" model="ir.ui.view">
         <field name="name">medical.consultation.form.view</field>
         <field name="model">medical.consultation</field>
         <field name="arch" type="xml">
             <form string="Consultation">
+                <header>
+                    <field name="appointment_state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <field name="invoice_id" invisible="1"/>
+                <div class="oe_button_box" name="button_box">
+                    <button name="open_consultation_invoice"
+                        type="object" string="Invoice"
+                        class="oe_stat_button"
+                        invisible="not invoice_id"
+                        icon="fa-dollar">
+                    </button>
+                </div>
                 <group>
                     <field name="date" required="1"/>
-                    <field name="description" required="1"/>
-                    <field name="evolution_ids">
-                        <tree editable="bottom">
-                            <field name="date"/>
-                            <field name="description"/>
+                    <field name="diagnosis"/>
+                    <field name="evaluation"/>
+                    <field name="procedure_ids" widget="many2many_tags"/>
+                    <field name="invoice_state"  readonly="1"/>
+                    <field name="evolution_ids" create="false">
+                        <tree>
+                            <field name="date" readonly="1"/>
+                            <field name="diagnosis" readonly="1"/>
+                            <field name="evaluation" readonly="1"/>
+                            <field name="appointment_state" readonly="1"/>
+                            <field name="invoice_state" readonly="1"/>
                         </tree>
                     </field>
                 </group>
             </form>
         </field>
+    </record>
+
+    <record id="medical_consultation_action" model="ir.actions.act_window">
+        <field name="name">Consultations</field>
+        <field name="res_model">medical.consultation</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

@@ -9,6 +9,8 @@
                         <br/>
                         <p><strong>Medic:</strong> <t t-esc="doc.medic_id.name"/></p>
                         <p><strong>Patient:</strong> <t t-esc="doc.patient_id.name"/></p>
+                        <p><strong>Age:</strong> <t t-esc="doc.age"/></p>
+                        <p><strong>DNI:</strong> <t t-esc="doc.vat"/></p>
                         <p><strong>Diagnosis:</strong> <t t-esc="doc.diagnosis"/></p>
                         <p><strong>Evaluation:</strong> <t t-esc="doc.evaluation"/></p>
                         <br/>
@@ -81,7 +83,8 @@
                         <br/>
                         <p><strong>Medic:</strong> <t t-esc="doc.medic_id.name"/></p>
                         <p><strong>Patient:</strong> <t t-esc="doc.patient_id.name"/></p>
-                        <p><strong>Diagnosis:</strong> <t t-esc="doc.diagnosis"/></p>
+                        <p><strong>Age:</strong> <t t-esc="doc.age"/></p>
+                        <p><strong>DNI:</strong> <t t-esc="doc.vat"/></p>
                         <br/>
                         <hr/>
                         <br/>

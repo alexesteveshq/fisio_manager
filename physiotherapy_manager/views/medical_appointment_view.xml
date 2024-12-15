@@ -20,7 +20,6 @@
                         <field name="medical_record_id" invisible="not type" readonly="type == 'consultation'" force_save="1"/>
                         <field name="therapist_id" invisible="type != 'therapy'" required="type == 'therapy'"
                                domain="[('contact_type', '=', 'therapist')]"/>
-                        <field name="session_id" invisible="type != 'therapy'" readonly="1" force_save="1"/>
                     </group>
                 </sheet>
             </form>
@@ -37,7 +36,7 @@
                 <field name="patient_id"/>
                 <field name="type"/>
                 <field name="medic_id" invisible="type != 'consultation'" filters="1" />
-                <field name="medical_record_id" invisible="type != 'consultation'"/>
+                <field name="consultation_id" invisible="type != 'consultation'"/>
                 <field name="therapist_id" invisible="type != 'therapy'" filters="1"/>
                 <field name="session_id" invisible="type != 'therapy'"/>
                 <field name="state"/>

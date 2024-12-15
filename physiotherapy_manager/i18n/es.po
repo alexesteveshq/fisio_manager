@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-24 13:59+0000\n"
-"PO-Revision-Date: 2024-11-24 13:59+0000\n"
+"POT-Creation-Date: 2024-12-15 14:13+0000\n"
+"PO-Revision-Date: 2024-12-15 14:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -67,6 +67,17 @@ msgstr "7. Domingo"
 #. module: physiotherapy_manager
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_recipe_template
+msgid "<strong>Age:</strong>"
+msgstr ""
+
+#. module: physiotherapy_manager
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_recipe_template
+msgid "<strong>DNI:</strong>"
+msgstr ""
+
+#. module: physiotherapy_manager
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 msgid "<strong>Diagnosis:</strong>"
 msgstr "<strong>Diagnostico:</strong>"
 
@@ -113,7 +124,7 @@ msgstr "Edad"
 
 #. module: physiotherapy_manager
 #. odoo-python
-#: code:addons/physiotherapy_manager/models/medical_record.py:0
+#: code:addons/physiotherapy_manager/models/medical_consultation.py:0
 #, python-format
 msgid "All consultations must belong to a same patient"
 msgstr "Todas las consultas deben pertenecer al mismo paciente"
@@ -131,12 +142,17 @@ msgid "Amount"
 msgstr "Monto"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__appointment_id
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__appointment_id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__appointment_id
 #: model:ir.module.category,name:physiotherapy_manager.module_medical_appointment
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_appointment_form_view
 msgid "Appointment"
 msgstr "Cita"
+
+#. module: physiotherapy_manager
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__appointment_state
+msgid "Appointment State"
+msgstr "Estado de cita"
 
 #. module: physiotherapy_manager
 #: model:ir.ui.menu,name:physiotherapy_manager.medical_appointment_root_menu
@@ -146,7 +162,7 @@ msgstr "Citas"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_appointment__state__attended
-#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record__state__attended
+#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_consultation__appointment_state__attended
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__state__attended
 msgid "Attended"
 msgstr "Asistido"
@@ -176,8 +192,9 @@ msgstr "Configuración"
 
 #. module: physiotherapy_manager
 #. odoo-python
-#: code:addons/physiotherapy_manager/models/medical_record.py:0
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__consultation_id
+#: code:addons/physiotherapy_manager/models/medical_consultation.py:0
+#: code:addons/physiotherapy_manager/models/medical_consultation.py:0
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__consultation_id
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_appointment__type__consultation
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_consultation_form_view
 #, python-format
@@ -192,7 +209,10 @@ msgid "Consultation of %s"
 msgstr "Consulta de "
 
 #. module: physiotherapy_manager
+#: model:ir.actions.act_window,name:physiotherapy_manager.medical_consultation_action
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__consultation_ids
+#: model:ir.ui.menu,name:physiotherapy_manager.medical_consultation_menu
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_consultation_tree_view
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_form_view
 msgid "Consultations"
 msgstr "Consultas"
@@ -206,7 +226,6 @@ msgstr "Contacto"
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__create_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__create_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__create_uid
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__create_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__create_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__create_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__create_uid
@@ -218,7 +237,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__create_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__create_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__create_date
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__create_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__create_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__create_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__create_date
@@ -233,7 +251,6 @@ msgstr "Moneda"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__date
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__date
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_appointment_form_view
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
@@ -257,14 +274,13 @@ msgid "Day Name"
 msgstr "Día"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__description
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__description
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__description
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 msgid "Description"
 msgstr "Descripción"
 
 #. module: physiotherapy_manager
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__diagnosis
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__diagnosis
 msgid "Diagnosis"
 msgstr "Diagnostico"
@@ -273,7 +289,6 @@ msgstr "Diagnostico"
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__display_name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__display_name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__display_name
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__display_name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__display_name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__display_name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__display_name
@@ -294,16 +309,10 @@ msgid "Ensurance"
 msgstr "Seguro"
 
 #. module: physiotherapy_manager
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__evaluation
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__evaluation
 msgid "Evaluation"
 msgstr "Evaluación"
-
-#. module: physiotherapy_manager
-#. odoo-python
-#: code:addons/physiotherapy_manager/models/medical_evolution.py:0
-#, python-format
-msgid "Evolution of %s"
-msgstr "Evolución de %s"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__evolution_ids
@@ -332,7 +341,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__id
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__id
@@ -343,32 +351,37 @@ msgstr ""
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__vat
 msgid "ID number"
-msgstr ""
+msgstr "DNI"
+
+#. module: physiotherapy_manager
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_form_view
+msgid "Information"
+msgstr "Información"
 
 #. module: physiotherapy_manager
 #. odoo-python
-#: code:addons/physiotherapy_manager/models/medical_record.py:0
+#: code:addons/physiotherapy_manager/models/medical_consultation.py:0
 #: code:addons/physiotherapy_manager/models/medical_record_session.py:0
-#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_form_view
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_consultation_form_view
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_session_form_view
 #, python-format
 msgid "Invoice"
 msgstr "Factura"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__invoice_state
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__invoice_state
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__invoice_state
 msgid "Invoice State"
 msgstr "Estado factura"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record__invoice_state__invoiced
+#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_consultation__invoice_state__invoiced
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__invoice_state__invoiced
 msgid "Invoiced"
 msgstr "Facturado"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__invoice_id
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__invoice_id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__invoice_id
 msgid "Invoices"
 msgstr "Facturas"
@@ -392,7 +405,6 @@ msgstr "Apunte contable"
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__write_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__write_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__write_uid
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__write_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__write_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__write_uid
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__write_uid
@@ -404,7 +416,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__write_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__write_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_ensurance__write_date
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__write_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__write_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_procedure__write_date
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__write_date
@@ -414,6 +425,7 @@ msgstr ""
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__medic_id
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__medic_id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__medic_id
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__res_partner__contact_type__medic
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_appointment_search_view
@@ -434,11 +446,6 @@ msgstr ""
 #: model:ir.model,name:physiotherapy_manager.model_medical_ensurance
 msgid "Medical Ensurance"
 msgstr "Seguro medico"
-
-#. module: physiotherapy_manager
-#: model:ir.model,name:physiotherapy_manager.model_medical_evolution
-msgid "Medical Evolution"
-msgstr ""
 
 #. module: physiotherapy_manager
 #: model:ir.model,name:physiotherapy_manager.model_medical_pathology
@@ -477,7 +484,6 @@ msgstr "Historia clinica"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__name
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_evolution__name
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__name
 msgid "Name"
 msgstr "Nombre"
@@ -489,13 +495,13 @@ msgstr "Sin sesiones"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_appointment__state__not_attended
-#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record__state__not_attended
+#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_consultation__appointment_state__not_attended
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__state__not_attended
 msgid "Not attended"
 msgstr "No asistido"
 
 #. module: physiotherapy_manager
-#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record__invoice_state__not_invoiced
+#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_consultation__invoice_state__not_invoiced
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__invoice_state__not_invoiced
 msgid "Not invoiced"
 msgstr "No facturado"
@@ -518,6 +524,7 @@ msgstr "Nivel de dolor"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__patient_id
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__patient_id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__patient_id
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__patient_id
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__res_partner__contact_type__patient
@@ -545,7 +552,7 @@ msgstr "Configurar administrador de fisioterapia"
 #. module: physiotherapy_manager
 #: model:ir.actions.act_window,name:physiotherapy_manager.medical_procedure_action
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_account_move_line__procedure_ids
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__procedure_ids
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_consultation__procedure_ids
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__procedure_ids
 #: model:ir.ui.menu,name:physiotherapy_manager.medical_procedure_menu
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
@@ -559,6 +566,7 @@ msgstr "Cantidad"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__recipe
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_form_view
 msgid "Recipe"
 msgstr "Receta"
 
@@ -589,7 +597,6 @@ msgstr "Sesiones"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__state
-#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__state
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__state
 msgid "State"
 msgstr "Estado"
@@ -645,14 +652,14 @@ msgstr "Usuario"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_appointment__state__waiting
-#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record__state__waiting
+#: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_consultation__appointment_state__waiting
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__state__waiting
 msgid "Waiting"
 msgstr "En espera"
 
 #. module: physiotherapy_manager
 #. odoo-python
-#: code:addons/physiotherapy_manager/models/medical_record.py:0
+#: code:addons/physiotherapy_manager/models/medical_consultation.py:0
 #, python-format
 msgid "consultation"
 msgstr "consulta"

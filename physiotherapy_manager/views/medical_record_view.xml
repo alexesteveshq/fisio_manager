@@ -9,9 +9,6 @@
                 <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
                 <field name="diagnosis"/>
                 <field name="evaluation"/>
-                <field name="state"/>
-                <field name="invoice_state"/>
-                <field name="appointment_id"/>
             </tree>
         </field>
     </record>
@@ -22,35 +19,28 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <header>
-                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
-                    </header>
-                    <field name="invoice_id" invisible="1"/>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="open_consultation_invoice"
-                            type="object" string="Invoice"
-                            class="oe_stat_button"
-                            invisible="not invoice_id"
-                            icon="fa-dollar">
-                        </button>
-                    </div>
                     <group>
-                        <field name="medic_id" domain="[('contact_type', '=', 'medic')]"/>
-                        <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
-                        <field name="appointment_id" readonly="1"/>
-                        <field name="age"/>
-                        <field name="vat"/>
-                        <field name="diagnosis"/>
-                        <field name="evaluation"/>
-                        <field name="recipe"/>
-                        <field name="procedure_ids" widget="many2many_tags"/>
+                        <group string="Information">
+                            <field name="medic_id" domain="[('contact_type', '=', 'medic')]"/>
+                            <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
+                            <field name="age"/>
+                            <field name="vat"/>
+                        </group>
+                        <group string="Recipe">
+                            <field name="diagnosis"/>
+                            <field name="evaluation"/>
+                            <field name="recipe"/>
+                        </group>
                     </group>
                     <notebook>
                         <page name="consultations" string="Consultations">
                             <field name="consultation_ids" nolabel="1">
                                 <tree>
                                     <field name="date"/>
-                                    <field name="description"/>
+                                    <field name="diagnosis"/>
+                                    <field name="evaluation"/>
+                                    <field name="appointment_state"/>
+                                    <field name="invoice_state"/>
                                 </tree>
                             </field>
                         </page>

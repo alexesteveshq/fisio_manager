@@ -9,4 +9,3 @@ from . import account_move
 from . import res_partner
 from . import medical_pathology
 from . import medical_consultation
-from . import medical_evolution

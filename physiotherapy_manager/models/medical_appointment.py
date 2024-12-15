@@ -12,6 +12,7 @@ class MedicalAppointment(models.Model):
     medic_id = fields.Many2one('res.partner', string='Medic')
     therapist_id = fields.Many2one('res.partner', string='Therapist')
     medical_record_id = fields.Many2one('medical.record', string='Medical record')
+    consultation_id = fields.Many2one('medical.consultation', string='Consultation')
     session_id = fields.Many2one('medical.record.session', string='Session')
     type = fields.Selection([('consultation', 'Consultation'), ('therapy', 'Therapy')], string='Type')
     state = fields.Selection([('waiting', 'Waiting'), ('attended', 'Attended'),
@@ -58,24 +59,32 @@ class MedicalAppointment(models.Model):
         res = super(MedicalAppointment, self).create(vals)
         for appointment in res:
             if appointment.type == 'consultation':
-                medical_record = self.env['medical.record'].create(
+                medical_record = self.env['medical.record'].search([('patient_id', '=', appointment.patient_id.id)])
+                if not medical_record:
+                    medical_record = self.env['medical.record'].create(
+                        {'medic_id': appointment.medic_id.id,
+                         'patient_id': appointment.patient_id.id})
+                consultation = self.env['medical.consultation'].create(
                     {'medic_id': appointment.medic_id.id,
+                     'date': appointment.date_begin,
+                     'medical_record_id': medical_record.id,
                      'patient_id': appointment.patient_id.id,
                      'appointment_id': appointment.id})
-                appointment.medical_record_id = medical_record
+                appointment.consultation_id = consultation.id
+                appointment.medical_record_id = medical_record.id
             elif appointment.type == 'therapy':
                 session = self.env['medical.record.session'].create(
                     {'therapist_id': appointment.therapist_id.id,
                      'medical_record_id': appointment.medical_record_id.id,
                      'appointment_id': appointment.id})
                 appointment.session_id = session
-                appointment.patient_id = appointment.medical_record_id.patient_id
+                appointment.patient_id = appointment.consultation_id.patient_id
         return res
 
     @api.onchange('state')
     def onchange_state(self):
         if self.type == 'consultation':
-            self.medical_record_id.state = self.state
+            self.consultation_id.appointment_state = self.state
         elif self.type == 'therapy':
             self.session_id.state = self.state
 
