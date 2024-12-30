@@ -5,6 +5,7 @@ from odoo import fields, models, api, _
 class MedicalRecord(models.Model):
     _name = 'medical.record'
     _description = 'Medical Record'
+    _rec_name = 'patient_id'
 
     medic_id = fields.Many2one('res.partner', string='Medic')
     patient_id = fields.Many2one('res.partner', string='Patient')
