@@ -27,6 +27,11 @@
         'report/medical_record_report.xml',
         'report/medical_record_template.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'physiotherapy_manager/static/src/css/physiotherapy_manager.css',
+        ]
+    },
     'license': 'AGPL-3',
     'installable': True,
     'auto_install': False,
