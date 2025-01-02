@@ -84,6 +84,7 @@ class MedicalAppointment(models.Model):
             elif appointment.type == 'therapy':
                 session = self.env['medical.record.session'].create(
                     {'therapist_id': appointment.therapist_id.id,
+                     'date': appointment.date_begin,
                      'medical_record_id': appointment.medical_record_id.id,
                      'appointment_id': appointment.id})
                 appointment.session_id = session
@@ -97,7 +98,6 @@ class MedicalAppointment(models.Model):
         elif self.type == 'therapy':
             self.session_id.state = self.state
 
-    @api.depends('patient_id')
     def _compute_display_name(self):
         for rec in self:
             if rec.type == 'consultation':
