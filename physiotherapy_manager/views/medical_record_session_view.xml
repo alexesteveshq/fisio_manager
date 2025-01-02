@@ -50,6 +50,7 @@
                         <field name="description"/>
                         <field name="observations"/>
                         <field name="quantity"/>
+                        <field name="state"/>
                     </group>
                 </sheet>
             </form>
