@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, models, api, _
 from datetime import datetime, timedelta
+from odoo.exceptions import ValidationError
 
 
 class MedicalAppointment(models.Model):
@@ -54,12 +55,20 @@ class MedicalAppointment(models.Model):
             else:
                 appointment.is_this_week = False
 
+    def write(self, vals):
+        result = super(MedicalAppointment, self).write(vals)
+        if (vals and 'state' not in vals and
+                not self.env.user.has_group('physiotherapy_manager.group_medical_appointment_admin')):
+            raise ValidationError(_('You can only modify the appointment attendance state.'))
+        return result
+
     @api.model_create_multi
     def create(self, vals):
         res = super(MedicalAppointment, self).create(vals)
         for appointment in res:
             if appointment.type == 'consultation':
-                medical_record = self.env['medical.record'].search([('patient_id', '=', appointment.patient_id.id)])
+                medical_record = self.env['medical.record'].search(
+                    [('patient_id', '=', appointment.patient_id.id)], limit=1)
                 if not medical_record:
                     medical_record = self.env['medical.record'].create(
                         {'medic_id': appointment.medic_id.id,
