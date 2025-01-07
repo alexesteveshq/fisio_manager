@@ -17,7 +17,7 @@
                                domain="[('contact_type', '=', 'patient')]"/>
                         <field name="medic_id" invisible="type != 'consultation'" required="type == 'consultation'"
                                domain="[('contact_type', '=', 'medic')]"/>
-                        <field name="medical_record_id" invisible="type != 'consultation'" readonly="type == 'consultation'" force_save="1"/>
+                        <field name="medical_record_id" force_save="1"/>
                         <field name="session_id" invisible="type != 'therapy'" readonly="type == 'therapy'" force_save="1"/>
                         <field name="therapist_id" invisible="type != 'therapy'" required="type == 'therapy'"
                                domain="[('contact_type', '=', 'therapist')]"/>
