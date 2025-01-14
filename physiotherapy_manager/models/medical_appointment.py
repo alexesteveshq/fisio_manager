@@ -22,6 +22,13 @@ class MedicalAppointment(models.Model):
     date_end = fields.Datetime(string='Date end')
     is_this_week = fields.Boolean(string="This Week", compute='_compute_is_this_week', store=True)
     day_name = fields.Char(string="Day Name", compute='_compute_day_name', store=True)
+    notes = fields.Text(string='Notes')
+    color = fields.Integer(string='Color', compute='_compute_color', store=True)
+
+    @api.depends('medic_id.color', 'therapist_id.color')
+    def _compute_color(self):
+        for app in self:
+            app.color = app.medic_id.color or app.therapist_id.color
 
     @api.depends('date_begin')
     def _compute_day_name(self):

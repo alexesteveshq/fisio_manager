@@ -9,3 +9,4 @@ class ResPartner(models.Model):
     contact_type = fields.Selection(
         [('patient', 'Patient'), ('medic', 'Medic'), ('therapist', 'Therapist')], string='Type')
     age = fields.Integer(string='Age')
+    color = fields.Integer(string='Color')

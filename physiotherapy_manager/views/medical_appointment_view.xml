@@ -21,6 +21,7 @@
                         <field name="session_id" invisible="type != 'therapy'" readonly="type == 'therapy'" force_save="1"/>
                         <field name="therapist_id" invisible="type != 'therapy'" required="type == 'therapy'"
                                domain="[('contact_type', '=', 'therapist')]"/>
+                        <field name="notes"/>
                     </group>
                 </sheet>
             </form>
@@ -31,7 +32,7 @@
         <field name="name">medical.appointment.calendar.view</field>
         <field name="model">medical.appointment</field>
         <field name="arch" type="xml">
-            <calendar string="Appointments" date_start="date_begin" date_stop="date_end" color="therapist_id"
+            <calendar string="Appointments" date_start="date_begin" date_stop="date_end" color="color"
                 event_open_popup="false"
                 quick_create="false">
                 <field name="patient_id"/>
@@ -41,6 +42,7 @@
                 <field name="therapist_id" invisible="type != 'therapy'" filters="1"/>
                 <field name="session_id" invisible="type != 'therapy'"/>
                 <field name="state"/>
+                <field name="notes"/>
             </calendar>
         </field>
     </record>

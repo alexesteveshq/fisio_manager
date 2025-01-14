@@ -14,6 +14,16 @@
         </field>
     </record>
 
+    <record id="medical_consultation_search_view" model="ir.ui.view">
+        <field name="name">medical.consultation.search.view</field>
+        <field name="model">medical.consultation</field>
+        <field name="arch" type="xml">
+            <search string="Search Consultations">
+                <field name="patient_id"/>
+            </search>
+        </field>
+    </record>
+
     <record id="medical_consultation_form_view" model="ir.ui.view">
         <field name="name">medical.consultation.form.view</field>
         <field name="model">medical.consultation</field>

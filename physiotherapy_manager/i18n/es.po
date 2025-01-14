@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-15 14:13+0000\n"
-"PO-Revision-Date: 2024-12-15 14:13+0000\n"
+"POT-Creation-Date: 2025-01-14 21:26+0000\n"
+"PO-Revision-Date: 2025-01-14 21:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -507,6 +507,11 @@ msgid "Not invoiced"
 msgstr "No facturado"
 
 #. module: physiotherapy_manager
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record_session__observations
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 msgid "Observations"
@@ -579,6 +584,16 @@ msgstr "Informe de receta"
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_appointment_search_view
 msgid "Search Appointments"
 msgstr "Buscar citas"
+
+#. module: physiotherapy_manager
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_consultation_search_view
+msgid "Search Consultations"
+msgstr ""
+
+#. module: physiotherapy_manager
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_session_search_view
+msgid "Search Sessions"
+msgstr ""
 
 #. module: physiotherapy_manager
 #: model:ir.actions.act_window,name:physiotherapy_manager.medical_record_session_action
@@ -656,6 +671,13 @@ msgstr "Usuario"
 #: model:ir.model.fields.selection,name:physiotherapy_manager.selection__medical_record_session__state__waiting
 msgid "Waiting"
 msgstr "En espera"
+
+#. module: physiotherapy_manager
+#. odoo-python
+#: code:addons/physiotherapy_manager/models/medical_appointment.py:0
+#, python-format
+msgid "You can only modify the appointment attendance state."
+msgstr ""
 
 #. module: physiotherapy_manager
 #. odoo-python

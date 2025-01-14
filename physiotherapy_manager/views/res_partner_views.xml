@@ -9,6 +9,7 @@
                 <field name="age"/>
                 <field name="ensurance_id"/>
                 <field name="contact_type"/>
+                <field name="color" widget="color_picker"/>
             </field>
         </field>
     </record>
