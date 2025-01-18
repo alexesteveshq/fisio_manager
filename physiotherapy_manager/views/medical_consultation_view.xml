@@ -45,6 +45,7 @@
                     <field name="date" required="1"/>
                     <field name="diagnosis"/>
                     <field name="evaluation"/>
+                    <field name="patient_id"/>
                     <field name="procedure_ids" widget="many2many_tags"/>
                     <field name="invoice_state"  readonly="1"/>
                     <field name="evolution_ids" create="false">
