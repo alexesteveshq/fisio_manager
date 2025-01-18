@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-14 21:26+0000\n"
-"PO-Revision-Date: 2025-01-14 21:26+0000\n"
+"POT-Creation-Date: 2025-01-18 12:50+0000\n"
+"PO-Revision-Date: 2025-01-18 12:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -68,16 +68,17 @@ msgstr "7. Domingo"
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_recipe_template
 msgid "<strong>Age:</strong>"
-msgstr ""
+msgstr "<strong>Edad:</strong>"
 
 #. module: physiotherapy_manager
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_recipe_template
 msgid "<strong>DNI:</strong>"
-msgstr ""
+msgstr "<strong>Cédula:</strong>"
 
 #. module: physiotherapy_manager
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_medical_record_template
+#: model_terms:ir.ui.view,arch_db:physiotherapy_manager.report_recipe_template
 msgid "<strong>Diagnosis:</strong>"
 msgstr "<strong>Diagnostico:</strong>"
 
@@ -177,6 +178,13 @@ msgstr "Calendario"
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_pathology__code
 msgid "Code"
 msgstr "Código"
+
+#. module: physiotherapy_manager
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__color
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_res_partner__color
+#: model:ir.model.fields,field_description:physiotherapy_manager.field_res_users__color
+msgid "Color"
+msgstr "Índice de Colores"
 
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_appointment__company_id
@@ -351,7 +359,7 @@ msgstr ""
 #. module: physiotherapy_manager
 #: model:ir.model.fields,field_description:physiotherapy_manager.field_medical_record__vat
 msgid "ID number"
-msgstr "DNI"
+msgstr "Cédula"
 
 #. module: physiotherapy_manager
 #: model_terms:ir.ui.view,arch_db:physiotherapy_manager.medical_record_form_view
