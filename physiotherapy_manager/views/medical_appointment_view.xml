@@ -61,6 +61,7 @@
                     <filter name="group_by_day" string="Day Name" context="{'group_by':'day_name'}"/>
                     <filter name="group_by_therapist" string="Therapist" context="{'group_by':'therapist_id'}"/>
                 </group>
+                <field name="medical_record_id"/>
                 <field name="patient_id"/>
                 <field name="medic_id"/>
                 <field name="therapist_id"/>

@@ -21,6 +21,7 @@
                 <sheet>
                     <group>
                         <group string="Information">
+                            <field name="company_id"/>
                             <field name="medic_id" domain="[('contact_type', '=', 'medic')]"/>
                             <field name="patient_id" domain="[('contact_type', '=', 'patient')]"/>
                             <field name="age"/>

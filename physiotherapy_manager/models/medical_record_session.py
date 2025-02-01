@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 class MedicalRecord(models.Model):
     _name = 'medical.record.session'
     _description = 'Medical Record Session'
+    _order = 'date'
 
     company_id = fields.Many2one('res.company', 'Company', default=lambda self: self.env.company)
     medical_record_id = fields.Many2one('medical.record', string='Medical record', ondelete='cascade')
