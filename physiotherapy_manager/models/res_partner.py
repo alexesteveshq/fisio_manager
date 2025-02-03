@@ -15,6 +15,7 @@ class ResPartner(models.Model):
     @api.constrains('vat')
     def _check_vat(self):
         for partner in self:
-            partners = self.env['res.partner'].search([('vat', '=', partner.vat)])
+            partners = self.env['res.partner'].search(
+                [('vat', '!=', False), ('vat', '=', partner.vat), ('id', '!=', partner.id)])
             if partners:
                 raise ValidationError(_('There is already a contact created with the same VAT.'))
